@@ -92,7 +92,7 @@ button:focus {
   width: 2.5rem;
   height: 2.5rem;
   border: 0.1rem solid var(--dtheme-gb-400);
-  border-radius: 100%;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,6 +154,10 @@ header.card h1 {
   color: hsl(234, 39%, 75%);
 }
 
+.item:hover {
+  color: var(--dtheme-gb-active-200);
+}
+
 /* STAT CONTAINER */
 
 .stat {
@@ -163,8 +167,7 @@ header.card h1 {
 }
 
 .stat * {
-  color: var(--dtheme-gb-500);
-  font-weight: var(--fw-bold);
+  color: hsl(237, 12%, 36%);
 }
 
 /* CORNERS */
@@ -176,6 +179,24 @@ header.card h1 {
 .stat .corner:last-child {
   display: flex;
   justify-content: flex-end;
+}
+
+.stat .corner button:hover {
+  color: var(--ltheme-gray-100);
+}
+
+/* MENU */
+
+.stat .menu {
+  font-weight: var(--fw-bold);
+}
+
+.stat .menu:hover {
+  color: var(--ltheme-gray-100);
+}
+
+.stat .menu.on {
+  color: var(--primary-clr-blue);
 }
 
 /* FOOTER */
