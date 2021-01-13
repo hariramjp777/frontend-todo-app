@@ -68,6 +68,7 @@ button {
 
 button {
   display: flex;
+  user-select: none;
 }
 
 input:focus,
@@ -155,6 +156,28 @@ header.card h1 {
 .add {
   margin: 4rem 0 2.5rem 0;
   border-radius: 0.5rem;
+}
+
+.add .cb-container {
+  transition: background 0.3s ease;
+}
+
+.add .cb-container #add-btn {
+  color: hsl(234, 39%, 75%);
+  font-size: var(--base-font);
+  transition: color 0.3s ease;
+}
+
+.add .cb-container:hover {
+  background: var(--primary-clr-blue);
+}
+
+.add .cb-container:active {
+  transform: scale(0.95);
+}
+
+.add .cb-container:hover #add-btn {
+  color: var(--ltheme-gray-100);
 }
 
 /* TODOS CONTAINER */
