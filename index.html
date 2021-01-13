@@ -24,83 +24,81 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <header class="card card--header">
-      <h1 class="card__heading">TODO</h1>
-      <button class="card__button" id="theme-switcher">
+    <header class="card">
+      <h1>TODO</h1>
+      <button id="theme-switcher">
         <img src="./assets/images/icon-sun.svg" alt="Change to light theme" />
       </button>
     </header>
     <main>
-      <div class="card card--add">
-        <div class="card__checkbox">
-          <input type="checkbox" class="card__checkbox__input" />
+      <div class="card add">
+        <div class="cb-container">
+          <input type="checkbox" class="cb-input" />
         </div>
-        <div class="card__text">
+        <div class="txt-container">
           <input
             type="text"
-            class="card__text__input"
+            class="txt-input"
             placeholder="Create a new todo..."
             spellcheck="false"
             autocomplete="off"
           />
         </div>
       </div>
-      <ul class="cards">
+      <ul class="todos">
         <li class="card">
-          <div class="card__checkbox">
-            <input type="checkbox" class="card__checkbox__input" />
+          <div class="cb-container">
+            <input type="checkbox" class="cb-input" />
           </div>
-          <p class="card__item">Complete online Javascript course</p>
-          <button class="card__button card__button--clear">
+          <p class="item">Complete online Javascript course</p>
+          <button class="clear">
             <img src="./assets/images/icon-cross.svg" alt="Clear it" />
           </button>
         </li>
         <li class="card">
-          <div class="card__checkbox">
-            <input type="checkbox" class="card__checkbox__input" />
+          <div class="cb-container">
+            <input type="checkbox" class="cb-input" />
           </div>
-          <p class="card__item">Complete online Javascript course</p>
-          <button class="card__button card__button--clear">
+          <p class="item">Complete online Javascript course</p>
+          <button class="clear">
             <img src="./assets/images/icon-cross.svg" alt="Clear it" />
           </button>
         </li>
         <li class="card">
-          <div class="card__checkbox">
-            <input type="checkbox" class="card__checkbox__input" />
+          <div class="cb-container">
+            <input type="checkbox" class="cb-input" />
           </div>
-          <p class="card__item">Complete online Javascript course</p>
-          <button class="card__button card__button--clear">
+          <p class="item">Complete online Javascript course</p>
+          <button class="clear">
             <img src="./assets/images/icon-cross.svg" alt="Clear it" />
           </button>
         </li>
         <li class="card">
-          <div class="card__checkbox">
-            <input type="checkbox" class="card__checkbox__input" />
+          <div class="cb-container">
+            <input type="checkbox" class="cb-input" />
           </div>
-          <p class="card__item">Complete online Javascript course</p>
-          <button class="card__button card__button--clear">
+          <p class="item">Complete online Javascript course</p>
+          <button class="clear">
             <img src="./assets/images/icon-cross.svg" alt="Clear it" />
           </button>
         </li>
         <li class="card">
-          <div class="card__checkbox">
-            <input type="checkbox" class="card__checkbox__input" />
+          <div class="cb-container">
+            <input type="checkbox" class="cb-input" />
           </div>
-          <p class="card__item">Complete online Javascript course</p>
-          <button class="card__button card__button--clear">
+          <p class="item">Complete online Javascript course</p>
+          <button class="clear">
             <img src="./assets/images/icon-cross.svg" alt="Clear it" />
           </button>
         </li>
       </ul>
-      <ul class="card card--stat">
-        <li class="card__corner"><span id="items-left">5</span> items left</li>
-        <li><button id="all" class="card__button">All</button></li>
-        <li><button id="active" class="card__button">Active</button></li>
-        <li><button id="completed" class="card__button">Completed</button></li>
-        <li class="card__corner">
-          <button id="clear-completed" class="card__button">
-            Clear Completed
-          </button>
+      <ul class="card stat">
+        <li class="corner"><span id="items-left">5</span> items left</li>
+        <li><button id="all">All</button></li>
+        <li><button id="active">Active</button></li>
+        <li><button id="completed">Completed</button></li>
+        <li class="corner">
+          <button id="clear-completed">Clear Completed</button>
         </li>
       </ul>
     </main>
