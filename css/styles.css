@@ -1,6 +1,6 @@
 :root {
   --ff-sans: "Josefin Sans", sans-serif;
-  --base-font: 1.8rem;
+  --base-font: 1.6rem;
   --fw-normal: 400;
   --fw-bold: 700;
   --primary-clr-blue: hsl(220, 98%, 61%);
@@ -36,14 +36,137 @@ body {
   min-height: 100%;
 }
 
-body {
-  font: var(--fw-normal) var(--base-font) var(--ff-sans);
-}
-
-body ul {
+ul {
   list-style: none;
 }
 
-body img {
+img {
   user-select: none;
+}
+
+body {
+  font: var(--fw-normal) var(--base-font) var(--ff-sans);
+  background: var(--dtheme-blue-400) url("../assets/images/bg-desktop-dark.jpg")
+    no-repeat 0% 0% / 100vw 30rem;
+  padding-top: 8rem;
+  width: 54rem;
+  margin: auto;
+}
+
+.cards .card:first-child {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.cards > * + * {
+  border-top: 0.2rem solid hsl(235, 19%, 24%);
+}
+
+.card {
+  background-color: var(--dtheme-blue-desat);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.9rem 2rem;
+  gap: 2rem;
+}
+
+.card__button {
+  display: flex;
+  background: transparent;
+  border: 0;
+  font: inherit;
+}
+
+.card__button:focus {
+  outline: 0;
+}
+
+.card--header {
+  background: transparent;
+  padding: 0;
+  align-items: flex-start;
+}
+
+.card__heading {
+  color: var(--ltheme-gray-100);
+  letter-spacing: 1.3rem;
+  font-weight: 700;
+  font-size: calc(var(--base-font) * 2);
+}
+
+main {
+  margin: 4rem 0;
+}
+
+.card--add {
+  margin-bottom: 2.5rem;
+  border-radius: 0.5rem;
+}
+
+.card__checkbox {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0.1rem solid var(--dtheme-gb-400);
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__checkbox__input {
+  transform: scale(1.8);
+  opacity: 0;
+}
+
+.card__text {
+  flex: 1;
+}
+
+.card__text__input {
+  width: 100%;
+  background: transparent;
+  padding: 0.7rem 0;
+  font: inherit;
+  border: 0;
+  color: var(--dtheme-gb-active-200);
+}
+
+.card__text__input::placeholder {
+  font: inherit;
+  color: var(--dtheme-gb-400);
+}
+
+.card__text__input:focus {
+  outline: 0;
+}
+
+.card__item {
+  flex: 1;
+  color: hsl(234, 39%, 75%);
+}
+
+.card--stat {
+  border-radius: 0 0 0.5rem 0.5rem;
+  border-top: 0.2rem solid hsl(235, 19%, 24%);
+  font-size: calc(var(--base-font) - 0.4rem);
+}
+
+.card--stat * {
+  color: var(--dtheme-gb-500) !important;
+  font-weight: var(--fw-bold);
+}
+
+.card__corner {
+  flex: 1;
+}
+
+.card__corner:last-child {
+  display: flex;
+  justify-content: flex-end;
+}
+
+footer {
+  margin-bottom: 4rem;
+  text-align: center;
+  color: var(--dtheme-gb-400);
 }
