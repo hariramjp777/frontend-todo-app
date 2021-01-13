@@ -23,5 +23,65 @@
     />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
-  <body></body>
+  <body>
+    <header class="card card--header">
+      <h1 class="card__heading">TODO</h1>
+      <button class="card__button" id="theme-switcher">
+        <img src="./assets/images/icon-sun.svg" alt="Change to light theme" />
+      </button>
+    </header>
+    <main>
+      <div class="card card--add">
+        <div class="card__checkbox">
+          <input type="checkbox" class="card__checkbox__input" />
+        </div>
+        <div class="card__text">
+          <input type="text" class="card__text__input" />
+        </div>
+      </div>
+      <ul>
+        <li class="card">
+          <div class="card__checkbox">
+            <input type="checkbox" class="card__checkbox__input" />
+          </div>
+          <p class="card__item">Complete online Javascript course</p>
+          <button class="card__button card__button--clear">
+            <img src="./assets/images/icon-cross.svg" alt="Clear it" />
+          </button>
+        </li>
+        <li class="card">
+          <div class="card__checkbox">
+            <input type="checkbox" class="card__checkbox__input" />
+          </div>
+          <p class="card__item">Complete online Javascript course</p>
+          <button class="card__button card__button--clear">
+            <img src="./assets/images/icon-cross.svg" alt="Clear it" />
+          </button>
+        </li>
+        <li class="card">
+          <div class="card__checkbox">
+            <input type="checkbox" class="card__checkbox__input" />
+          </div>
+          <p class="card__item">Complete online Javascript course</p>
+          <button class="card__button card__button--clear">
+            <img src="./assets/images/icon-cross.svg" alt="Clear it" />
+          </button>
+        </li>
+      </ul>
+      <ul class="card card--stat">
+        <li class="card__corner"><span id="items-left">5</span> items left</li>
+        <li><button id="all" class="card__button">All</button></li>
+        <li><button id="active" class="card__button">Active</button></li>
+        <li><button id="completed" class="card__button">Completed</button></li>
+        <li class="card__corner">
+          <button id="clear-completed" class="card__button">
+            Clear Completed
+          </button>
+        </li>
+      </ul>
+    </main>
+    <footer>
+      <p class="tip">Drag and drop to reorder list</p>
+    </footer>
+  </body>
 </html>
