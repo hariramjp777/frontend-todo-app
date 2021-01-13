@@ -1,0 +1,49 @@
+:root {
+  --ff-sans: "Josefin Sans", sans-serif;
+  --base-font: 1.8rem;
+  --fw-normal: 400;
+  --fw-bold: 700;
+  --primary-clr-blue: hsl(220, 98%, 61%);
+  --primary-clr-green: hsl(192, 100%, 67%);
+  --primary-clr-pink: hsl(280, 87%, 65%);
+  --ltheme-gray-100: hsl(0, 0%, 98%);
+  --ltheme-gb-100: hsl(236, 33%, 92%);
+  --ltheme-gb-200: hsl(233, 11%, 84%);
+  --ltheme-gb-300: hsl(236, 9%, 61%);
+  --ltheme-gb-400: hsl(235, 19%, 35%);
+  --dtheme-gb-200: hsl(234, 39%, 85%);
+  --dtheme-gb-active-200: hsl(236, 33%, 92%);
+  --dtheme-gb-300: hsl(234, 11%, 52%);
+  --dtheme-gb-400: hsl(233, 14%, 35%);
+  --dtheme-gb-500: hsl(237, 14%, 26%);
+  --dtheme-blue-400: hsl(235, 21%, 11%);
+  --dtheme-blue-desat: hsl(235, 24%, 19%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  position: relative;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font: var(--fw-normal) var(--base-font) var(--ff-sans);
+}
+
+body ul {
+  list-style: none;
+}
+
+body img {
+  user-select: none;
+}
