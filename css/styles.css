@@ -199,10 +199,26 @@ header.card h1 {
   color: var(--dtheme-gb-active-200);
 }
 
-.item.item-completed {
+/* COMPLETED ITEM */
+
+.cb-container.checked + .item {
   text-decoration: line-through;
   color: var(--dtheme-gb-300);
   text-decoration-color: var(--dtheme-gb-300);
+}
+
+/* CLEAR CONTAINER */
+
+.clear {
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.todos .card:hover .clear {
+  opacity: 1;
+  pointer-events: all;
 }
 
 /* STAT CONTAINER */
