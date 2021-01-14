@@ -205,7 +205,7 @@ header.card h1 {
 
 /* COMPLETED ITEM */
 
-.cb-container.checked + .item {
+.todos .card.checked .item {
   text-decoration: line-through;
   color: var(--dtheme-gb-300);
   text-decoration-color: var(--dtheme-gb-300);
