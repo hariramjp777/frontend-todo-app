@@ -13,8 +13,8 @@ function addTodo() {
   if (item) {
     console.log(item);
     txtInput.value = "";
-    txtInput.focus();
   }
+  txtInput.focus();
 }
 
 function complete(checkbox) {
