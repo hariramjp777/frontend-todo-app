@@ -97,15 +97,17 @@
           </button>
         </li>
       </ul>
-      <ul class="card stat">
-        <li class="corner"><span id="items-left">5</span> items left</li>
-        <li><button id="all" class="menu on">All</button></li>
-        <li><button id="active" class="menu">Active</button></li>
-        <li><button id="completed" class="menu">Completed</button></li>
-        <li class="corner">
+      <div class="card stat">
+        <p class="corner"><span id="items-left">5</span> items left</p>
+        <div class="filter">
+          <button id="all" class="on">All</button>
+          <button id="active">Active</button>
+          <button id="completed">Completed</button>
+        </div>
+        <div class="corner">
           <button id="clear-completed">Clear Completed</button>
-        </li>
-      </ul>
+        </div>
+      </div>
     </main>
     <footer>
       <p>Drag and drop to reorder list</p>

@@ -252,17 +252,20 @@ header.card h1 {
   color: var(--ltheme-gray-100);
 }
 
-/* MENU */
+/* FILTER BUTTONS */
 
-.stat .menu {
+.stat .filter {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
   font-weight: var(--fw-bold);
 }
 
-.stat .menu:hover {
+.stat .filter *:hover {
   color: var(--ltheme-gray-100);
 }
 
-.stat .menu.on {
+.stat .filter .on {
   color: var(--primary-clr-blue);
 }
 
@@ -272,4 +275,25 @@ footer {
   margin: 4rem 0;
   text-align: center;
   color: var(--dtheme-gb-400);
+}
+
+/* FILTER TODOS */
+
+.todos.active .card.checked,
+.todos.completed .card {
+  transition: 0.4s;
+  opacity: 0;
+  padding: 0;
+  border: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.todos.completed .card.checked {
+  opacity: 1;
+  padding: 1.9rem 2rem;
+  height: auto;
+  display: flex;
+  pointer-events: all;
+  transition: 0.4s;
 }

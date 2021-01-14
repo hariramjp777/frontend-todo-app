@@ -1,67 +1,74 @@
-const todoList = document.querySelector(".todos");
+/* DOMContentLoaded */
 document.addEventListener("DOMContentLoaded", main);
-function main() {
-  getTodo();
-  const add = document.getElementById("add-btn");
-  const checkboxes = document.querySelectorAll(".cb-input");
-  const clear = document.querySelectorAll(".clear");
-  add.addEventListener("click", addTodo);
 
-  console.log(checkboxes);
+/* MAIN */
+
+function main() {
+  /* GET ALL TODOs */
+  addTodo();
+
+  /* CHECKBOX - CHECK OR UNCHECK */
+  const checkboxes = document.querySelectorAll(".cb-container .cb-input");
   checkboxes.forEach(function (checkbox) {
-    checkbox.addEventListener("input", function () {
-      status(this);
+    checkbox.addEventListener("click", function () {
+      const correspondingCard = this.parentElement.parentElement;
+      const checked = this.checked;
+      stateTodo(
+        [...document.querySelectorAll(".todos .card")].indexOf(
+          correspondingCard
+        ),
+        checked
+      );
+      checked
+        ? correspondingCard.classList.add("checked")
+        : correspondingCard.classList.remove("checked");
     });
   });
+
+  /* ADD TODO */
+  const add = document.getElementById("add-btn");
+  const txtInput = document.querySelector(".txt-input");
+  add.addEventListener("click", function () {
+    const item = txtInput.value.trim();
+    if (item) {
+      txtInput.value = "";
+      const todos = !localStorage.getItem("todos")
+        ? []
+        : JSON.parse(localStorage.getItem("todos"));
+      todos.push({
+        item,
+        isCompleted: false,
+      });
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+    txtInput.focus();
+  });
+
+  /* CLICK ADD BUTTON IF PRESS ENTER */
+  txtInput.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+      add.click();
+    }
+  });
+
+  /* FILTER TODO */
+  document.querySelector(".filter").addEventListener("click", function (e) {
+    const id = e.target.id;
+    if (id) {
+      document.querySelector(".on").classList.remove("on");
+      document.getElementById(id).classList.add("on");
+      document.querySelector(".todos").className = `todos ${id}`;
+    }
+  });
+}
+
+function stateTodo(index, completed) {
+  const todos = JSON.parse(localStorage.getItem("todos"));
+  todos[index].isCompleted = completed;
+  localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 function addTodo() {
-  const txtInput = document.querySelector(".txt-input");
-  const item = txtInput.value.trim();
-  if (item) {
-    txtInput.value = "";
-    saveTodo(item);
-  }
-  txtInput.focus();
-}
-
-function saveTodo(item) {
-  let todos;
-  if (!localStorage.getItem("todos")) {
-    todos = [];
-  } else {
-    todos = JSON.parse(localStorage.getItem("todos"));
-  }
-  todos.push({
-    item,
-    complete: false,
-  });
-  localStorage.setItem("todos", JSON.stringify(todos));
-}
-
-function status(checkbox) {
-  const card = checkbox.parentElement.parentElement;
-  if (checkbox.checked) {
-    card.classList.add("checked");
-    console.log([...document.querySelectorAll(".todos .card")].findIndex(card));
-    // filterTodo(checkbox.parentElement.nextElementSibling, true);
-  } else {
-    card.classList.remove("checked");
-    // filterTodo(checkbox.parentElement.nextElementSibling, false);
-  }
-}
-
-function filterTodo(item, completed) {
-  const todos = JSON.parse(localStorage.getItem("todos"));
-  todos.forEach(function (todo) {
-    if (todo.item === item.textContent) {
-      todo.complete = completed;
-    }
-  });
-  localStorage.setItem("todos", JSON.stringify(todos));
-}
-
-function getTodo() {
   const todos = JSON.parse(localStorage.getItem("todos"));
   if (!todos) {
     return null;
@@ -85,7 +92,7 @@ function getTodo() {
     img.setAttribute("alt", "Clear it");
     cbInput.setAttribute("type", "checkbox");
     item.textContent = todo.item;
-    if (todo.complete) {
+    if (todo.isCompleted) {
       card.classList.add("checked");
       cbInput.setAttribute("checked", "checked");
     }
@@ -95,6 +102,6 @@ function getTodo() {
     card.appendChild(cbContainer);
     card.appendChild(item);
     card.appendChild(button);
-    todoList.appendChild(card);
+    document.querySelector(".todos").appendChild(card);
   });
 }
