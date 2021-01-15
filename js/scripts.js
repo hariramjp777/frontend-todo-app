@@ -7,24 +7,6 @@ function main() {
   /* GET ALL TODOs */
   addTodo();
 
-  /* CHECKBOX - CHECK OR UNCHECK */
-  const checkboxes = document.querySelectorAll(".cb-container .cb-input");
-  checkboxes.forEach(function (checkbox) {
-    checkbox.addEventListener("click", function () {
-      const correspondingCard = this.parentElement.parentElement;
-      const checked = this.checked;
-      stateTodo(
-        [...document.querySelectorAll(".todos .card")].indexOf(
-          correspondingCard
-        ),
-        checked
-      );
-      checked
-        ? correspondingCard.classList.add("checked")
-        : correspondingCard.classList.remove("checked");
-    });
-  });
-
   /* ADD TODO */
   const add = document.getElementById("add-btn");
   const txtInput = document.querySelector(".txt-input");
@@ -35,10 +17,12 @@ function main() {
       const todos = !localStorage.getItem("todos")
         ? []
         : JSON.parse(localStorage.getItem("todos"));
-      todos.push({
+      const currentTodo = {
         item,
         isCompleted: false,
-      });
+      };
+      addTodo([currentTodo]);
+      todos.push(currentTodo);
       localStorage.setItem("todos", JSON.stringify(todos));
     }
     txtInput.focus();
@@ -60,6 +44,25 @@ function main() {
       document.querySelector(".todos").className = `todos ${id}`;
     }
   });
+
+  /* CLEAR COMPLETED */
+  document
+    .getElementById("clear-completed")
+    .addEventListener("click", function () {
+      deleteIndexes = [];
+      document.querySelectorAll(".card.checked").forEach(function (card) {
+        deleteIndexes.push(
+          [...document.querySelectorAll(".todos .card")].indexOf(card)
+        );
+        card.classList.add("fall");
+        card.addEventListener("animationend", function (e) {
+          setTimeout(function () {
+            card.remove();
+          }, 100);
+        });
+      });
+      removeManyTodo(deleteIndexes);
+    });
 }
 
 function stateTodo(index, completed) {
@@ -68,11 +71,25 @@ function stateTodo(index, completed) {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 
-function addTodo() {
+function removeTodo(index) {
   const todos = JSON.parse(localStorage.getItem("todos"));
+  todos.splice(index, 1);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function removeManyTodo(indexes) {
+  let todos = JSON.parse(localStorage.getItem("todos"));
+  todos = todos.filter(function (todo, index) {
+    return !indexes.includes(index);
+  });
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function addTodo(todos = JSON.parse(localStorage.getItem("todos"))) {
   if (!todos) {
     return null;
   }
+  const itemsLeft = document.getElementById("items-left");
   todos.forEach(function (todo) {
     const card = document.createElement("li");
     const cbContainer = document.createElement("div");
@@ -96,6 +113,39 @@ function addTodo() {
       card.classList.add("checked");
       cbInput.setAttribute("checked", "checked");
     }
+    cbInput.addEventListener("click", function () {
+      const correspondingCard = this.parentElement.parentElement;
+      const checked = this.checked;
+      stateTodo(
+        [...document.querySelectorAll(".todos .card")].indexOf(
+          correspondingCard
+        ),
+        checked
+      );
+      checked
+        ? correspondingCard.classList.add("checked")
+        : correspondingCard.classList.remove("checked");
+      itemsLeft.textContent = document.querySelectorAll(
+        ".todos .card:not(.checked)"
+      ).length;
+    });
+    button.addEventListener("click", function () {
+      const correspondingCard = this.parentElement;
+      correspondingCard.classList.add("fall");
+      removeTodo(
+        [...document.querySelectorAll(".todos .card")].indexOf(
+          correspondingCard
+        )
+      );
+      correspondingCard.addEventListener("animationend", function () {
+        setTimeout(function () {
+          correspondingCard.remove();
+          itemsLeft.textContent = document.querySelectorAll(
+            ".todos .card:not(.checked)"
+          ).length;
+        }, 100);
+      });
+    });
     button.appendChild(img);
     cbContainer.appendChild(cbInput);
     cbContainer.appendChild(check);
@@ -104,4 +154,7 @@ function addTodo() {
     card.appendChild(button);
     document.querySelector(".todos").appendChild(card);
   });
+  itemsLeft.textContent = document.querySelectorAll(
+    ".todos .card:not(.checked)"
+  ).length;
 }

@@ -297,3 +297,28 @@ footer {
   pointer-events: all;
   transition: 0.4s;
 }
+
+.todos.completed > .card.checked ~ .card.checked {
+  border-top: 0.2rem solid hsl(235, 19%, 24%);
+}
+
+/* FALL ANIMATION */
+.todos .card.fall {
+  pointer-events: none;
+  animation: fall 0.2s forwards ease;
+}
+
+@keyframes fall {
+  0% {
+    opacity: 0.5;
+    transform: translateX(20%);
+  }
+  50% {
+    transform: translateX(25%) rotateZ(40deg);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(30%) rotateZ(90deg);
+    opacity: 0;
+  }
+}
