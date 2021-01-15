@@ -3,21 +3,38 @@
   --base-font: 1.6rem;
   --fw-normal: 400;
   --fw-bold: 700;
-  --primary-clr-blue: hsl(220, 98%, 61%);
-  --primary-clr-green: hsl(192, 100%, 67%);
-  --primary-clr-pink: hsl(280, 87%, 65%);
-  --ltheme-gray-100: hsl(0, 0%, 98%);
+  --img-bg: url("../assets/images/bg-desktop-dark.jpg");
+  --clr-blue: hsl(220, 98%, 61%);
+  --clr-green: hsl(192, 100%, 67%);
+  --clr-pink: hsl(280, 87%, 65%);
+  --clr-white: hsl(0, 0%, 98%);
+  --clr-gb-1: hsl(236, 33%, 92%);
+  --clr-gb-2: hsl(234, 39%, 75%);
+  --clr-gb-3: hsl(234, 11%, 52%);
+  --clr-gb-4: hsl(237, 12%, 36%);
+  --clr-gb-5: hsl(233, 14%, 35%);
+  --clr-gb-6: hsl(235, 19%, 24%);
+  --clr-page-bg: hsl(235, 21%, 11%);
+  --clr-card-bg: hsl(235, 24%, 19%);
   --ltheme-gb-100: hsl(236, 33%, 92%);
   --ltheme-gb-200: hsl(233, 11%, 84%);
   --ltheme-gb-300: hsl(236, 9%, 61%);
   --ltheme-gb-400: hsl(235, 19%, 35%);
-  --dtheme-gb-200: hsl(234, 39%, 85%);
-  --dtheme-gb-active-200: hsl(236, 33%, 92%);
-  --dtheme-gb-300: hsl(234, 11%, 52%);
-  --dtheme-gb-400: hsl(233, 14%, 35%);
-  --dtheme-gb-500: hsl(237, 14%, 26%);
-  --dtheme-blue-400: hsl(235, 21%, 11%);
-  --dtheme-blue-desat: hsl(235, 24%, 19%);
+}
+
+/* CHANGE CUSTOM PROPERTIES WHEN LIGHT THEME */
+
+body.light {
+  --img-bg: url("../assets/images/bg-desktop-light.jpg");
+  --clr-page-bg: hsl(0, 0%, 98%);
+  --clr-card-bg: hsl(0, 0%, 100%);
+  --clr-white: hsl(243, 12%, 30%);
+  --clr-gb-1: hsl(240, 8%, 24%);
+  --clr-gb-2: hsl(243, 12%, 30%);
+  --clr-gb-3: hsl(252, 6%, 83%);
+  --clr-gb-4: hsl(237, 10%, 64%);
+  --clr-gb-5: hsl(252, 9%, 73%);
+  --clr-gb-6: hsl(252, 21%, 94%);
 }
 
 /* RESETS */
@@ -50,11 +67,11 @@ img {
 
 body {
   font: var(--fw-normal) var(--base-font) var(--ff-sans);
-  background: var(--dtheme-blue-400) url("../assets/images/bg-desktop-dark.jpg")
-    no-repeat 0% 0% / 100vw 30rem;
+  background: var(--clr-page-bg) var(--img-bg) no-repeat 0% 0% / 100vw 30rem;
   padding-top: 8rem;
   width: 54rem;
   margin: auto;
+  transition: 0.4s ease;
 }
 
 /* INPUT AND BUTTON */
@@ -79,7 +96,7 @@ button:focus {
 /* ALL ARE CARDS  */
 
 .card {
-  background-color: var(--dtheme-blue-desat);
+  background-color: var(--clr-card-bg);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -92,7 +109,7 @@ button:focus {
 .card .cb-container {
   width: 2.5rem;
   height: 2.5rem;
-  border: 0.1rem solid var(--dtheme-gb-400);
+  border: 0.1rem solid var(--clr-gb-5);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -117,7 +134,7 @@ button:focus {
 
 .card .cb-container .cb-input:checked + .check {
   background: url("../assets/images/icon-check.svg"),
-    linear-gradient(45deg, var(--primary-clr-green), var(--primary-clr-pink));
+    linear-gradient(45deg, var(--clr-green), var(--clr-pink));
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -129,11 +146,11 @@ button:focus {
 .card .txt-container .txt-input {
   width: 100%;
   padding: 0.7rem 0;
-  color: var(--dtheme-gb-active-200);
+  color: var(--clr-gb-1);
 }
 
 .card .txt-container .txt-input::placeholder {
-  color: var(--dtheme-gb-400);
+  color: var(--clr-gb-5);
 }
 
 /* HEADER'S CARD */
@@ -145,10 +162,14 @@ header.card {
 }
 
 header.card h1 {
-  color: var(--ltheme-gray-100);
+  color: var(--clr-white);
   letter-spacing: 1.3rem;
   font-weight: 700;
   font-size: calc(var(--base-font) * 2);
+}
+
+body.light header.card h1 {
+  color: var(--clr-page-bg);
 }
 
 /* ADD CARD */
@@ -163,7 +184,7 @@ header.card h1 {
 }
 
 .add .cb-container #add-btn {
-  color: hsl(234, 39%, 75%);
+  color: var(--clr-gb-2);
   font-size: var(--base-font);
   transition: color 0.3s ease;
   width: 100%;
@@ -173,7 +194,7 @@ header.card h1 {
 }
 
 .add .cb-container:hover {
-  background: var(--primary-clr-blue);
+  background: var(--clr-blue);
 }
 
 .add .cb-container:active {
@@ -181,7 +202,7 @@ header.card h1 {
 }
 
 .add .cb-container:hover #add-btn {
-  color: var(--ltheme-gray-100);
+  color: var(--clr-white);
 }
 
 /* TODOS CONTAINER */
@@ -191,24 +212,28 @@ header.card h1 {
 }
 
 .todos > * + * {
-  border-top: 0.2rem solid hsl(235, 19%, 24%);
+  border-top: 0.2rem solid var(--clr-gb-6);
 }
 
 .item {
   flex: 1;
-  color: hsl(234, 39%, 75%);
+  color: var(--clr-gb-2);
 }
 
 .item:hover {
-  color: var(--dtheme-gb-active-200);
+  color: var(--clr-gb-1);
+}
+
+body.light .todos {
+  box-shadow: 0 0 2rem 0.4rem rgb(0, 0, 0, 0.1);
 }
 
 /* COMPLETED ITEM */
 
 .todos .card.checked .item {
   text-decoration: line-through;
-  color: var(--dtheme-gb-300);
-  text-decoration-color: var(--dtheme-gb-300);
+  color: var(--clr-gb-3);
+  text-decoration-color: var(--clr-gb-3);
 }
 
 /* CLEAR CONTAINER */
@@ -229,12 +254,16 @@ header.card h1 {
 
 .stat {
   border-radius: 0 0 0.5rem 0.5rem;
-  border-top: 0.2rem solid hsl(235, 19%, 24%);
+  border-top: 0.2rem solid var(--clr-gb-6);
   font-size: calc(var(--base-font) - 0.3rem);
 }
 
 .stat * {
-  color: hsl(237, 12%, 36%);
+  color: var(--clr-gb-4);
+}
+
+body.light .stat {
+  box-shadow: 0 1rem 2rem -0.4rem rgb(0, 0, 0, 0.1);
 }
 
 /* CORNERS */
@@ -249,7 +278,7 @@ header.card h1 {
 }
 
 .stat .corner button:hover {
-  color: var(--ltheme-gray-100);
+  color: var(--clr-white);
 }
 
 /* FILTER BUTTONS */
@@ -262,11 +291,11 @@ header.card h1 {
 }
 
 .stat .filter *:hover {
-  color: var(--ltheme-gray-100);
+  color: var(--clr-white);
 }
 
 .stat .filter .on {
-  color: var(--primary-clr-blue);
+  color: var(--clr-blue);
 }
 
 /* FOOTER */
@@ -274,7 +303,7 @@ header.card h1 {
 footer {
   margin: 4rem 0;
   text-align: center;
-  color: var(--dtheme-gb-400);
+  color: var(--clr-gb-5);
 }
 
 /* FILTER TODOS */
@@ -299,7 +328,7 @@ footer {
 }
 
 .todos.completed > .card.checked ~ .card.checked {
-  border-top: 0.2rem solid hsl(235, 19%, 24%);
+  border-top: 0.2rem solid var(--clr-gb-6);
 }
 
 /* FALL ANIMATION */
