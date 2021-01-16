@@ -1,0 +1,13 @@
+todo-card model for reference
+
+<li class="card">
+  <div class="cb-container">
+    <input type="checkbox" class="cb-input" />
+    <span class="check"></span>
+  </div>
+  <p class="item">Complete online Javascript course</p>
+  <button class="clear">
+    <img src="./assets/images/icon-cross.svg" alt="Clear it" />
+  </button>
+</li>
+    
