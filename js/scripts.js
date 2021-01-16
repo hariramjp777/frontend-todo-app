@@ -25,6 +25,7 @@ function main() {
   let currPos;
   let newPos;
   document.querySelector(".todos").addEventListener("dragover", function (e) {
+    e.preventDefault();
     if (
       !e.target.classList.contains("dragging") &&
       e.target.classList.contains("card")

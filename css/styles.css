@@ -207,6 +207,10 @@ body.light header.card h1 {
 
 /* TODOS CONTAINER */
 
+.todos .card[draggable] {
+  cursor: move;
+}
+
 .todos .card:first-child {
   border-radius: 0.5rem 0.5rem 0 0;
 }
@@ -353,6 +357,6 @@ footer {
 }
 
 /* DRAG AND DROP */
-.todos .card.dragging{
+.todos .card.dragging {
   opacity: 0.5;
 }
