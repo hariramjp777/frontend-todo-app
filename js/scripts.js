@@ -21,6 +21,35 @@ function main() {
   /* GET ALL TODOs */
   addTodo();
 
+  /* DRAG AND DROP */
+  let currPos;
+  let newPos;
+  document.querySelector(".todos").addEventListener("dragover", function (e) {
+    if (
+      !e.target.classList.contains("dragging") &&
+      e.target.classList.contains("card")
+    ) {
+      const cards = [...this.querySelectorAll(".card")];
+      currPos = cards.indexOf(document.querySelector(".dragging"));
+      newPos = cards.indexOf(e.target);
+      console.log(currPos, newPos);
+      if (currPos > newPos) {
+        this.insertBefore(document.querySelector(".dragging"), e.target);
+      } else {
+        this.insertBefore(
+          document.querySelector(".dragging"),
+          e.target.nextSibling
+        );
+      }
+      const todos = JSON.parse(localStorage.getItem("todos"));
+      const removed = todos.splice(currPos, 1);
+      todos.splice(newPos, 0, removed[0]);
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
+  });
+
+  document.querySelector(".todos").addEventListener("dragend", function () {});
+
   /* ADD TODO */
   const add = document.getElementById("add-btn");
   const txtInput = document.querySelector(".txt-input");
@@ -113,6 +142,7 @@ function addTodo(todos = JSON.parse(localStorage.getItem("todos"))) {
     const button = document.createElement("button");
     const img = document.createElement("img");
     card.classList.add("card");
+    card.setAttribute("draggable", true);
     button.classList.add("clear");
     cbContainer.classList.add("cb-container");
     cbInput.classList.add("cb-input");
@@ -127,6 +157,12 @@ function addTodo(todos = JSON.parse(localStorage.getItem("todos"))) {
       card.classList.add("checked");
       cbInput.setAttribute("checked", "checked");
     }
+    card.addEventListener("dragstart", function () {
+      this.classList.add("dragging");
+    });
+    card.addEventListener("dragend", function () {
+      this.classList.remove("dragging");
+    });
     cbInput.addEventListener("click", function () {
       const correspondingCard = this.parentElement.parentElement;
       const checked = this.checked;

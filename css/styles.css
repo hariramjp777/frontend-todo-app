@@ -351,3 +351,8 @@ footer {
     opacity: 0;
   }
 }
+
+/* DRAG AND DROP */
+.todos .card.dragging{
+  opacity: 0.5;
+}
