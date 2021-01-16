@@ -4,31 +4,29 @@
   --fw-normal: 400;
   --fw-bold: 700;
   --img-bg: url("../assets/images/bg-desktop-dark.jpg");
+  --clr-primary: hsl(0, 0%, 98%);
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-page-bg: hsl(235, 21%, 11%);
+  --clr-card-bg: hsl(235, 24%, 19%);
   --clr-blue: hsl(220, 98%, 61%);
   --clr-green: hsl(192, 100%, 67%);
   --clr-pink: hsl(280, 87%, 65%);
-  --clr-white: hsl(0, 0%, 98%);
   --clr-gb-1: hsl(236, 33%, 92%);
   --clr-gb-2: hsl(234, 39%, 75%);
   --clr-gb-3: hsl(234, 11%, 52%);
   --clr-gb-4: hsl(237, 12%, 36%);
   --clr-gb-5: hsl(233, 14%, 35%);
   --clr-gb-6: hsl(235, 19%, 24%);
-  --clr-page-bg: hsl(235, 21%, 11%);
-  --clr-card-bg: hsl(235, 24%, 19%);
-  --ltheme-gb-100: hsl(236, 33%, 92%);
-  --ltheme-gb-200: hsl(233, 11%, 84%);
-  --ltheme-gb-300: hsl(236, 9%, 61%);
-  --ltheme-gb-400: hsl(235, 19%, 35%);
+  --clr-box-shadow: hsl(0, 0%, 0%, 0.1);
 }
 
 /* CHANGE CUSTOM PROPERTIES WHEN LIGHT THEME */
 
 body.light {
   --img-bg: url("../assets/images/bg-desktop-light.jpg");
+  --clr-primary: hsl(243, 12%, 30%);
   --clr-page-bg: hsl(0, 0%, 98%);
   --clr-card-bg: hsl(0, 0%, 100%);
-  --clr-white: hsl(243, 12%, 30%);
   --clr-gb-1: hsl(240, 8%, 24%);
   --clr-gb-2: hsl(243, 12%, 30%);
   --clr-gb-3: hsl(252, 6%, 83%);
@@ -104,7 +102,22 @@ button:focus {
   gap: 2rem;
 }
 
-/* CHECKBOX AND INPUT - CONTAINERS AND FIELDS  */
+/* HEADER'S CARD */
+
+header.card {
+  background: transparent;
+  padding: 0;
+  align-items: flex-start;
+}
+
+header.card h1 {
+  color: var(--clr-white);
+  letter-spacing: 1.3rem;
+  font-weight: 700;
+  font-size: calc(var(--base-font) * 2);
+}
+
+/* CHECKBOX CONTAINER AND FIELD */
 
 .card .cb-container {
   width: 2.5rem;
@@ -132,44 +145,13 @@ button:focus {
   border-radius: inherit;
 }
 
+/* CHECKED CARD */
+
 .card .cb-container .cb-input:checked + .check {
   background: url("../assets/images/icon-check.svg"),
     linear-gradient(45deg, var(--clr-green), var(--clr-pink));
   background-repeat: no-repeat;
   background-position: center;
-}
-
-.card .txt-container {
-  flex: 1;
-}
-
-.card .txt-container .txt-input {
-  width: 100%;
-  padding: 0.7rem 0;
-  color: var(--clr-gb-1);
-}
-
-.card .txt-container .txt-input::placeholder {
-  color: var(--clr-gb-5);
-}
-
-/* HEADER'S CARD */
-
-header.card {
-  background: transparent;
-  padding: 0;
-  align-items: flex-start;
-}
-
-header.card h1 {
-  color: var(--clr-white);
-  letter-spacing: 1.3rem;
-  font-weight: 700;
-  font-size: calc(var(--base-font) * 2);
-}
-
-body.light header.card h1 {
-  color: var(--clr-page-bg);
 }
 
 /* ADD CARD */
@@ -205,7 +187,30 @@ body.light header.card h1 {
   color: var(--clr-white);
 }
 
+.add .txt-container {
+  flex: 1;
+}
+
+.add .txt-container .txt-input {
+  width: 100%;
+  padding: 0.7rem 0;
+  color: var(--clr-gb-1);
+}
+
+body.light .add .txt-container .txt-input {
+  font-weight: var(--fw-bold);
+}
+
+.add .txt-container .txt-input::placeholder {
+  color: var(--clr-gb-5);
+  font-weight: var(--fw-normal);
+}
+
 /* TODOS CONTAINER */
+
+.todos > * {
+  transition: 0.4s ease;
+}
 
 .todos .card[draggable] {
   cursor: move;
@@ -229,7 +234,7 @@ body.light header.card h1 {
 }
 
 body.light .todos {
-  box-shadow: 0 0 2rem 0.4rem rgb(0, 0, 0, 0.1);
+  box-shadow: 0 0 2rem 0.4rem var(--clr-box-shadow);
 }
 
 /* COMPLETED ITEM */
@@ -267,7 +272,7 @@ body.light .todos {
 }
 
 body.light .stat {
-  box-shadow: 0 1rem 2rem -0.4rem rgb(0, 0, 0, 0.1);
+  box-shadow: 0 1rem 2rem -0.4rem var(--clr-box-shadow);
 }
 
 /* CORNERS */
@@ -282,7 +287,7 @@ body.light .stat {
 }
 
 .stat .corner button:hover {
-  color: var(--clr-white);
+  color: var(--clr-primary);
 }
 
 /* FILTER BUTTONS */
@@ -295,7 +300,7 @@ body.light .stat {
 }
 
 .stat .filter *:hover {
-  color: var(--clr-white);
+  color: var(--clr-primary);
 }
 
 .stat .filter .on {
@@ -310,6 +315,7 @@ footer {
   color: var(--clr-gb-5);
 }
 
+/* JAVASCRIPT FUNCTIONS - STYLES */
 /* FILTER TODOS */
 
 .todos.active .card.checked,
