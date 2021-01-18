@@ -69,7 +69,6 @@ body {
   padding-top: 8rem;
   width: min(85%, 54rem);
   margin: auto;
-  transition: 0.4s ease;
 }
 
 /* INPUT AND BUTTON */
