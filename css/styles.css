@@ -90,6 +90,10 @@ button:focus {
   outline: 0;
 }
 
+label {
+  display: none;
+}
+
 /* ALL ARE CARDS  */
 
 .card {
